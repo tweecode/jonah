@@ -228,7 +228,7 @@ macros['else'] = macros['endif'] = { handler: function() {} };
 
 // <<remember>>
 
-version.extensions.rememberMacro = {major: 1, minor: 0, revision: 0};
+version.extensions.rememberMacro = {major: 1, minor: 1, revision: 0};
 
 macros['remember'] =
 {
@@ -240,11 +240,14 @@ macros['remember'] =
 
 		// evaluate the statement if any
 		
-		config.macros['set'].run(statement);
+		macros['set'].run(statement);
 		
 		// find the variable to save
 		
-		variable = statement.match(new RegExp(Wikifier.parse('$') + '(\\w+)', 'i'))[1];
+		var variableSigil = Wikifier.parse('$');
+		variableSigil = variableSigil.replace('[', '\\[');
+		variableSigil = variableSigil.replace(']', '\\]');
+		variable = statement.match(new RegExp(variableSigil + '(\\w+)', 'i'))[1];
 		value = eval(Wikifier.parse('$' + variable));
 						
 		// simple JSON-like encoding

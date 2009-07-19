@@ -83,7 +83,8 @@ Passage.prototype.render = function()
 	var passage = insertElement(null, 'div', 'passage' + this.title, 'passage');
 	passage.style.visibility = 'hidden';
 		
-	var toolbar = insertElement(passage, 'div', '', 'toolbar');
+	var title = insertElement(passage, 'div', '', 'title', this.title);
+	var toolbar = insertElement(title, 'span', '', 'toolbar');
 	
 	for (var i = 0; i < Passage.toolbarItems.length; i++)
 	{
@@ -100,7 +101,6 @@ Passage.prototype.render = function()
 		link.onclick = Passage.toolbarItems[i].activate;
 	};
 		
-	insertElement(passage, 'div', '', 'title', this.title);	
 	var body = insertElement(passage, 'div', '', 'body');
 	
 	new Wikifier(body, this.text);

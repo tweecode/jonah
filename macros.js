@@ -76,38 +76,34 @@ macros['display'] =
 
 // <<actions>>
 
-version.extensions.actionsMacro = { major: 1, minor: 0, revision: 0 };
+version.extensions.actionsMacro = { major: 1, minor: 2, revision: 0 };
 
 macros['actions'] =
 {
-	clicked: new Object(),
-	
 	handler: function (place, macroName, params)
 	{
-		var list = document.createElement('ul');
+		var list = insertElement(place, 'ul');
+		
+		if (! state.history[0].variables['actions clicked'])
+			state.history[0].variables['actions clicked'] = {};
 		
 		for (var i = 0; i < params.length; i++)
 		{
-			if (macros['actions'].clicked[params[i]])
+			if (state.history[0].variables['actions clicked'][params[i]])
 				continue;
-		
-			var item = document.createElement('li');
-			macros['choice'].handler(item, 'choice', [ params[i] ]);
+					
+			var item = insertElement(list, 'li');
+			var link = Wikifier.createInternalLink(item, params[i]);
+			insertText(link, params[i]);
 			
 			// rewrite the function in the link
-			
-			var link = item.getElementsByTagName('a')[0];
-		
+					
 			link.onclick = function()
 			{
-				macros['actions'].clicked[this.innerHTML] = true;
-				macros['choice'].activate(this, this.innerHTML);
+				state.history[0].variables['actions clicked'][this.id] = true;
+				state.display(this.id, link);
 			};
-			
-			list.appendChild(item);
 		};
-		
-		place.appendChild(list);
 	}
 };
 

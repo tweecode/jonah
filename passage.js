@@ -83,8 +83,8 @@ Passage.prototype.render = function()
 	var passage = insertElement(null, 'div', 'passage' + this.title, 'passage');
 	passage.style.visibility = 'hidden';
 		
-	var title = insertElement(passage, 'div', '', 'title', this.title);
-	var toolbar = insertElement(title, 'span', '', 'toolbar');
+	var title = insertElement(passage, 'span', '', 'title', this.title);
+	var toolbar = insertElement(passage, 'span', '', 'toolbar');
 	
 	for (var i = 0; i < Passage.toolbarItems.length; i++)
 	{

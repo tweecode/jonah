@@ -50,6 +50,13 @@ ul li
 	list-style-type: square;
 }
 
+.title .toolbar a
+{
+	color: #000;
+	font: bold 1.4em Verdana, sans-serif;
+	line-height: 200%;
+}
+
 .toolbar a
 {
 	color: #999;
@@ -79,13 +86,6 @@ a.brokenLink
 {
 	background-color: red;
 	color: black;
-}
-
-.title
-{
-	color: #000;
-	font: bold 1.4em Verdana, sans-serif;
-	line-height: 200%;
 }
 
 #footer

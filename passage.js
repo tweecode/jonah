@@ -80,7 +80,7 @@ Passage.prototype.render = function()
 {
 	// construct passage
 	
-	var passage = insertElement(null, 'div', 'passage' + this.title, 'passage');
+	var passage = insertElement(null, 'div', 'passage' + this.title.split(' ').join('_'), 'passage');
 	passage.style.visibility = 'hidden';
 		
 	var title = insertElement(passage, 'span', '', 'title', this.title);

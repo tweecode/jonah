@@ -50,7 +50,7 @@ ul li
 	list-style-type: square;
 }
 
-.title .toolbar a
+.title, .toolbar a
 {
 	color: #000;
 	font: bold 1.4em Verdana, sans-serif;
